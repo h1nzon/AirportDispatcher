@@ -13,17 +13,17 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0">
+        <StackPanel Grid.Row="0" Background="#202020">
             <Image Source="../../Assets/Logo.png" Width="150" Margin="20"/>
             <UniformGrid Columns="2">
                 <usercontrols:SelectedButton x:Name="LoginButton" 
+                                             IsSelected="True"
                                              Text="Login"
                                              Height="25" 
                                              Click="LoginButton_Click"/>
                 <usercontrols:SelectedButton x:Name="RegButton"
                                              Text="Register"
                                              Height="25"
-                                             VisibilityLine="Hidden"
                                              Click="RegButton_Click"/>
             </UniformGrid>
         </StackPanel>

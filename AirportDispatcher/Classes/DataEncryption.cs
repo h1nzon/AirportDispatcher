@@ -38,7 +38,6 @@ namespace AirportDispatcher.Classes
                         {
                             sw.Write(data);
                         }
-
                         encrypted = ms.ToArray();
                     }
                 }

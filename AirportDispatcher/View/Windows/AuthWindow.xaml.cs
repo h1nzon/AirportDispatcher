@@ -17,15 +17,11 @@ namespace AirportDispatcher.View.Windows
         private void LoginButton_Click(object sender, System.EventArgs e)
         {
             AuthFrame.Navigate(new SignInPage());
-            LoginButton.VisibilityLine = Visibility.Visible;
-            RegButton.VisibilityLine = Visibility.Hidden;
         }
 
         private void RegButton_Click(object sender, System.EventArgs e)
         {
             AuthFrame.Navigate(new SignUpPage());
-            RegButton.VisibilityLine = Visibility.Visible;
-            LoginButton.VisibilityLine = Visibility.Hidden;
         }
     }
 }

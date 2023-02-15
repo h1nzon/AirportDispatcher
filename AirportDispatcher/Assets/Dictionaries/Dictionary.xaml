@@ -4,4 +4,17 @@
     <Style x:Key="CustomWindowStyle" TargetType="{x:Type Window}">
         <Setter Property="BorderBrush" Value="#202020"/>
     </Style>
+
+    <Style TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="#3D5754"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Background="{TemplateBinding Background}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>
