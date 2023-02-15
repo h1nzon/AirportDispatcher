@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Media.Animation;
 
 namespace AirportDispatcher.UserControls
@@ -11,8 +12,9 @@ namespace AirportDispatcher.UserControls
     /// </summary>
     public partial class CustomTextBox : UserControl
     {
+        public string Header { get; set; }
         public string Text { get; set; }
-        
+           
         public TextBoxType TextType { get; set; }
         
         public enum TextBoxType { Text, Password }
@@ -28,6 +30,8 @@ namespace AirportDispatcher.UserControls
         {
             InitializeComponent();
             this.DataContext = this;
+            ThisTextBox.CaretBrush = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
+            ThisPasswordBox.CaretBrush = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
             easingFunction.EasingMode = EasingMode.EaseOut;
         }
 
@@ -36,34 +40,89 @@ namespace AirportDispatcher.UserControls
             TypeSelected();
         }
 
+        /// <summary>
+        /// Событие для анимации CustomTextBox 
+        /// </summary>
         private async void TextBox_GotFocus(object sender, RoutedEventArgs e)
         {
             await Task.Delay(100);
             if (!_flagAnimation && String.IsNullOrWhiteSpace(ThisTextBox.Text) && ThisPasswordBox.Password == "")
             {
                 _flagAnimation = true;
-                double currentY = ThisTextBlock.Margin.Top;
-                DoubleAnimation anim = new DoubleAnimation(currentY - 15, TimeSpan.FromSeconds(1));
-                anim.EasingFunction = easingFunction;
-                ThisTextBlock.BeginAnimation(FrameworkElement.MarginProperty, new ThicknessAnimation(new Thickness(0, currentY - 15, 0, 0), TimeSpan.FromSeconds(0.1)));
+
+                DoubleAnimation translateYAnimation = new DoubleAnimation
+                {
+                    From = 0,
+                    To = -18,
+                    Duration = new Duration(TimeSpan.FromSeconds(0.5)),
+                    EasingFunction = new QuadraticEase { EasingMode = EasingMode.EaseOut }
+                };
+                DoubleAnimation fontSizeAnimation = new DoubleAnimation
+                {
+                    From = 12,
+                    To = 15,
+                    Duration = new Duration(TimeSpan.FromSeconds(0.5)),
+                    EasingFunction = new QuadraticEase { EasingMode = EasingMode.EaseOut }
+                };
+                Storyboard storyboard = new Storyboard();
+                storyboard.Children.Add(translateYAnimation);
+                storyboard.Children.Add(fontSizeAnimation);
+                FrameworkElement element = ThisTextBlock;
+                PropertyPath propertyPath = new PropertyPath("(FrameworkElement.RenderTransform).(TranslateTransform.Y)");
+                Storyboard.SetTargetProperty(translateYAnimation, propertyPath);
+                Storyboard.SetTargetProperty(fontSizeAnimation, new PropertyPath(TextBlock.FontSizeProperty));
+                ThisTextBlock.RenderTransform = new TranslateTransform(0, 0);
+                storyboard.Begin(element);
+
+                await Task.Delay(500);
+
+                ThisTextBox.CaretBrush = null;
+                ThisPasswordBox.CaretBrush = null;
             }
         }
 
+        /// <summary>
+        /// Событие для анимации CustomTextBox 
+        /// </summary>
         private async void TextBox_LostFocus(object sender, RoutedEventArgs e)
         {
             await Task.Delay(200);
             if (_flagAnimation && String.IsNullOrWhiteSpace(ThisTextBox.Text) && ThisPasswordBox.Password == "")
             {
                 _flagAnimation = false;
-                double currentY = ThisTextBlock.Margin.Top;
-                double currentX = ThisTextBlock.Margin.Left;
-                DoubleAnimation anim = new DoubleAnimation(currentY + 15, TimeSpan.FromSeconds(1));
-                anim.EasingFunction = easingFunction;
-                ThisTextBlock.BeginAnimation(FrameworkElement.MarginProperty, new ThicknessAnimation(new Thickness(currentX + 5, currentY + 15, 0, 0), TimeSpan.FromSeconds(0.1)));
+
+                ThisTextBox.CaretBrush = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
+                ThisPasswordBox.CaretBrush = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
+
+                DoubleAnimation translateYAnimation = new DoubleAnimation
+                {
+                    From = -18,
+                    To = 0,
+                    Duration = new Duration(TimeSpan.FromSeconds(0.5)),
+                    EasingFunction = new QuadraticEase { EasingMode = EasingMode.EaseOut }
+                };
+                DoubleAnimation fontSizeAnimation = new DoubleAnimation
+                {
+                    From = 15,
+                    To = 12,
+                    Duration = new Duration(TimeSpan.FromSeconds(0.5)),
+                    EasingFunction = new QuadraticEase { EasingMode = EasingMode.EaseOut }
+                };
+                Storyboard storyboard = new Storyboard();
+                storyboard.Children.Add(translateYAnimation);
+                storyboard.Children.Add(fontSizeAnimation);
+                FrameworkElement element = ThisTextBlock;
+                PropertyPath propertyPath = new PropertyPath("(FrameworkElement.RenderTransform).(TranslateTransform.Y)");
+                Storyboard.SetTargetProperty(translateYAnimation, propertyPath);
+                Storyboard.SetTargetProperty(fontSizeAnimation, new PropertyPath(TextBlock.FontSizeProperty));
+                ThisTextBlock.RenderTransform = new TranslateTransform(0, 0);
+                storyboard.Begin(element);
             }
-            
         }
 
+        /// <summary>
+        /// Проверка выбранного типа TextBox
+        /// </summary>
         private void TypeSelected()
         {
             if (TextType == TextBoxType.Password)

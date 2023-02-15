@@ -9,8 +9,16 @@
     <Grid>
         <Border x:Name="TextBoxBorder" CornerRadius="4" BorderBrush="#606060" BorderThickness="2">
             <Grid>
-                <TextBlock Text="{Binding Text}" x:Name="ThisTextBlock" Background="#404040" Margin="5" TextAlignment="Center" HorizontalAlignment="Left"/>
-                <TextBox x:Name="ThisTextBox" 
+                <TextBlock Text="{Binding Header}" 
+                           x:Name="ThisTextBlock" 
+                           Background="#404040"
+                           Foreground="AliceBlue"
+                           Margin="5 0 0 0" 
+                           TextAlignment="Center" 
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Center"/>
+                <TextBox x:Name="ThisTextBox"
+                         Text="{Binding Text}"
                          Background="Transparent" 
                          BorderThickness="0" 
                          VerticalAlignment="Center" 
