@@ -14,15 +14,15 @@
             <usercontrols:CustomTextBox Width="200"
                                         Height="35"
                                         Margin="0 0 0 15"
-                                        Header="Введите логин"/>
+                                        PlaceHolder="Введите логин"/>
             <usercontrols:CustomTextBox Width="200"
                                         Height="35"
                                         Margin="0 0 0 15"
-                                        Header="Введите пароль" 
+                                        PlaceHolder="Введите пароль" 
                                         TextType="Password"/>
-            <CheckBox Content="Remember me" Margin="0 0 0 15"/>
+            <usercontrols:CustomCheckBox Margin="0 0 0 15" Width="30" HorizontalAlignment="Left"/>
             <Border CornerRadius="4" BorderThickness="2" BorderBrush="#606060">
-                <Button Content="Войти" Background="Transparent" BorderThickness="0"/>
+                <usercontrols:CustomButton Text="Войти"/>
             </Border>
         </StackPanel>
     </Grid>

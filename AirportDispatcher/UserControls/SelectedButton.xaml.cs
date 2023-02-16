@@ -1,13 +1,8 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
 using System.Windows.Media.Animation;
-using System.Windows.Media;
 using System.Windows.Shapes;
-using System.Windows.Documents;
-using System.Threading.Tasks;
-using System.ComponentModel;
 using System.Windows.Input;
 
 namespace AirportDispatcher.UserControls
@@ -37,26 +32,6 @@ namespace AirportDispatcher.UserControls
             {
                 Click(this, e);
             }
-        }
-
-        private void ThisButton_MouseEnter(object sender, MouseEventArgs e)
-        {
-            LineAnimationEnabled();
-        }
-
-        private void ThisButton_MouseLeave(object sender, MouseEventArgs e)
-        {
-            LineAnimationFalse();
-        }
-
-        private void ThisRadioButton_Checked(object sender, RoutedEventArgs e)
-        {
-            LineAnimationEnabled();
-        }
-
-        private void ThisRadioButton_Unchecked(object sender, RoutedEventArgs e)
-        {
-            LineAnimationFalse();
         }
 
         private bool _firstStart = true;
@@ -90,6 +65,26 @@ namespace AirportDispatcher.UserControls
                 };
                 LineSelected.BeginAnimation(Line.X2Property, animation);
             }
+        }
+
+        private void ThisButton_MouseEnter(object sender, MouseEventArgs e)
+        {
+            LineAnimationEnabled();
+        }
+
+        private void ThisButton_MouseLeave(object sender, MouseEventArgs e)
+        {
+            LineAnimationFalse();
+        }
+
+        private void ThisRadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            LineAnimationEnabled();
+        }
+
+        private void ThisRadioButton_Unchecked(object sender, RoutedEventArgs e)
+        {
+            LineAnimationFalse();
         }
     }
 }

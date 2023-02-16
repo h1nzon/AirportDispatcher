@@ -12,7 +12,7 @@ namespace AirportDispatcher.UserControls
     /// </summary>
     public partial class CustomTextBox : UserControl
     {
-        public string Header { get; set; }
+        public string PlaceHolder { get; set; }
         public string Text { get; set; }
            
         public TextBoxType TextType { get; set; }

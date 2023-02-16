@@ -9,7 +9,7 @@
     <Grid>
         <Border x:Name="TextBoxBorder" CornerRadius="4" BorderBrush="#606060" BorderThickness="2">
             <Grid>
-                <TextBlock Text="{Binding Header}" 
+                <TextBlock Text="{Binding PlaceHolder}" 
                            x:Name="ThisTextBlock" 
                            Background="#404040"
                            Foreground="AliceBlue"
