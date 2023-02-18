@@ -7,6 +7,6 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <Button x:Name="ThisButton" Content="{Binding Text}" BorderThickness="0" MouseEnter="ThisButton_MouseEnter" MouseLeave="ThisButton_MouseLeave"/>
+        <Button x:Name="ThisButton" Content="{Binding Text}" Foreground="AliceBlue" BorderThickness="0" Click="ThisButton_Click"/>
     </Grid>
 </UserControl>

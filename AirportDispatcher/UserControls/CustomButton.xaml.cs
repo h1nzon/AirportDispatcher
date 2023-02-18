@@ -1,4 +1,6 @@
-﻿using System.Windows.Controls;
+﻿using System;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace AirportDispatcher.UserControls
 {
@@ -8,39 +10,22 @@ namespace AirportDispatcher.UserControls
     public partial class CustomButton : UserControl
     {
         public string Text { set; get; }
+
+        public delegate void MyButtonClickEventHandler(object sender, EventArgs e);
+        public event MyButtonClickEventHandler Click;
+
+        private void ThisButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (Click != null)
+            {
+                Click(this, e);
+            }
+        }
+
         public CustomButton()
         {
             InitializeComponent();
             this.DataContext = this;
         }
-
-        /*private Storyboard backgroundAnimation;*/
-
-        private void ThisButton_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
-        {
-
-        }
-
-        private void ThisButton_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
-        {
-
-        }
-
-        /*private void AnimationStart()
-        {
-            backgroundAnimation = new Storyboard();
-            backgroundAnimation.Duration = new Duration(TimeSpan.FromSeconds(1));
-            backgroundAnimation.AutoReverse = true;
-            FrameworkElement element = ThisButton;
-            ColorAnimation animation = new ColorAnimation();
-            animation.From = Colors.LightGray;
-            animation.To = Colors.DarkGray;
-            animation.Duration = new Duration(TimeSpan.FromSeconds(0.5));
-            animation.AutoReverse = true;
-
-            Storyboard.SetTargetProperty(animation, new PropertyPath("(Button.Background).(SolidColorBrush.Color)"));
-            backgroundAnimation.Children.Add(animation);
-            backgroundAnimation.Begin(element, true);
-        }*/
     }
 }

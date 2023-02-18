@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using System.Windows;
+using System.Windows.Controls;
 
 namespace AirportDispatcher.View.Pages
 {
@@ -10,6 +11,12 @@ namespace AirportDispatcher.View.Pages
         public SignInPage()
         {
             InitializeComponent();
+        }
+
+        private void SignInButton_Click(object sender, System.EventArgs e)
+        {
+            // Заглушка на авторизацию.
+            MessageBox.Show("Авторизация");
         }
     }
 }
