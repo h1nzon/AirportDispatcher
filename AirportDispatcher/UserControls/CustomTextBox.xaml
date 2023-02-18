@@ -16,7 +16,8 @@
                            Margin="5 0 0 0" 
                            TextAlignment="Center" 
                            HorizontalAlignment="Left"
-                           VerticalAlignment="Center"/>
+                           VerticalAlignment="Center"
+                           FontWeight="SemiBold"/>
                 <TextBox x:Name="ThisTextBox"
                          Text="{Binding Text}"
                          Background="Transparent" 

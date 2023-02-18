@@ -7,15 +7,30 @@
         xmlns:usercontrols="clr-namespace:AirportDispatcher.UserControls"
         mc:Ignorable="d"
         Title="AuthWindow" Height="450" Width="350" ResizeMode="NoResize"
-        WindowStartupLocation="CenterScreen" Background="#404040">
-    <Grid >
-        <Border BorderThickness="2 0 2 2" BorderBrush="#8bd7f9">
+        WindowStartupLocation="CenterScreen" Background="#404040" 
+        WindowStyle="None" AllowsTransparency="True">
+    <Grid>
+        <Border BorderThickness="2 2 2 2" BorderBrush="#8bd7f9">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <StackPanel Grid.Row="0" Background="#202020">
+                <StackPanel x:Name="ApplicationBar" Grid.Column="0" VerticalAlignment="Center" Background="#202020" MouseDown="ApplicationBar_MouseDown">
+                    <Grid Height="20" Background="#202020" Margin="5">
+                        <TextBlock Text="{Binding Title,RelativeSource={RelativeSource FindAncestor,AncestorType=Window}}"/>
+                        <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                            <Button>
+                                <Image Source="../../Assets/minimize.png"/>
+                            </Button>
+                            <Button x:Name="ApplicationCloseButton" Click="ApplicationClose_Click">
+                                <Image Source="../../Assets/close.png"/>
+                            </Button>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+                <StackPanel Grid.Row="1" Background="#202020">
                     <Image Source="../../Assets/Logo.png" Width="150" Margin="20"/>
                     <UniformGrid Columns="2">
                         <usercontrols:SelectedButton x:Name="LoginButton" 
@@ -29,9 +44,8 @@
                                                  Click="RegButton_Click"/>
                     </UniformGrid>
                 </StackPanel>
-                <Frame x:Name="AuthFrame" NavigationUIVisibility="Hidden" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <Frame x:Name="AuthFrame" NavigationUIVisibility="Hidden" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center"/>
             </Grid>
         </Border>
     </Grid>
-
 </Window>

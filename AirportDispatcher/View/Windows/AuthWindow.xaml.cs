@@ -1,5 +1,6 @@
 ﻿using AirportDispatcher.View.Pages;
 using System.Windows;
+using System.Windows.Media;
 
 namespace AirportDispatcher.View.Windows
 {
@@ -14,6 +15,8 @@ namespace AirportDispatcher.View.Windows
             AuthFrame.Navigate(new SignInPage());
         }
 
+        #region Button Events
+
         private void LoginButton_Click(object sender, System.EventArgs e)
         {
             AuthFrame.Navigate(new SignInPage());
@@ -23,5 +26,21 @@ namespace AirportDispatcher.View.Windows
         {
             AuthFrame.Navigate(new SignUpPage());
         }
+
+        #endregion
+
+        #region Application Events
+
+        private void ApplicationBar_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            this.DragMove();
+        }
+
+        private void ApplicationClose_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        #endregion
     }
 }

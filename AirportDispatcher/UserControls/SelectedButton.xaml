@@ -13,7 +13,9 @@
                    Foreground="White"
                    VerticalAlignment="Center"
                    HorizontalAlignment="Center"
-                   TextAlignment="Center"/>
+                   TextAlignment="Center"
+                   FontSize="14"
+                   FontWeight="SemiBold"/>
         <Line X1="0" X2="0"
               x:Name="LineSelected"
               Stroke="#8bd7f9" 
