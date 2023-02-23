@@ -31,11 +31,13 @@ namespace AirportDispatcher.View.Windows
 
         #region Application Events
 
+        // Событие для перемещение окна.
         private void ApplicationBar_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             this.DragMove();
         }
 
+        // Событие для закрытия окна.
         private void ApplicationClose_Click(object sender, RoutedEventArgs e)
         {
             this.Close();

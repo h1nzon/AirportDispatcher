@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -14,13 +15,18 @@ namespace AirportDispatcher.UserControls
     {
         public string PlaceHolder { get; set; }
         public string Text { get; set; }
-           
-        public TextBoxType TextType { get; set; }
+        public string Password { get; set; }
+        public SolidColorBrush BorderColor { get; set; }
         
+        public TextBoxType TextType { get; set; }
+
         public enum TextBoxType { Text, Password }
         
         public static readonly DependencyProperty BorderStyleProperty =
         DependencyProperty.Register("TextBoxType", typeof(TextBoxType), typeof(CustomTextBox));
+
+        public delegate void ChangeTextBox(object sender, RoutedEventArgs e);
+        public event ChangeTextBox TextChange;
 
         private bool _flagAnimation = false;
 
@@ -30,6 +36,7 @@ namespace AirportDispatcher.UserControls
         {
             InitializeComponent();
             this.DataContext = this;
+            BorderColor = new SolidColorBrush(Color.FromRgb(96, 96, 96));
             ThisTextBox.CaretBrush = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
             ThisPasswordBox.CaretBrush = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
             easingFunction.EasingMode = EasingMode.EaseOut;
@@ -133,6 +140,13 @@ namespace AirportDispatcher.UserControls
             {
                 ThisPasswordBox.Visibility = Visibility.Collapsed;
             }
+        }
+
+        private void ThisPasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            Password = new NetworkCredential(string.Empty, ThisPasswordBox.SecurePassword).Password;
+            TextChange?.Invoke(this, e);
+            ThisPasswordBox.BorderBrush = BorderColor;
         }
     }
 }

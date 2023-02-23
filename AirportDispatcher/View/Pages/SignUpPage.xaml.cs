@@ -20,9 +20,31 @@ namespace AirportDispatcher.View.Pages
     /// </summary>
     public partial class SignUpPage : Page
     {
+        private bool _isUpper = false;
+
         public SignUpPage()
         {
             InitializeComponent();
+        }
+
+        private void PasswordTextBox_TextChange(object sender, RoutedEventArgs e)
+        {
+            var password = PasswordTextBox.Password;
+            if (password != null)
+            {
+                for (int i = 0; i < password.Length; i++)
+                {
+                    if (char.IsUpper(password[i]))
+                        _isUpper = true;
+                    else
+                        _isUpper = false;
+                }
+            }
+            if (PasswordTextBox.Password.Length > 6)
+            {
+                PasswordProgress.Value += 10;
+            }
+            
         }
     }
 }

@@ -12,8 +12,8 @@ namespace AirportDispatcher.Classes
         /// в режиме ECB (Electronic Codebook), всех входящих данных.
         /// </summary>
 
-        private static byte[] key = Encoding.UTF8.GetBytes("EhP#?Sw0c?hF"); // 16, 24, or 32 bytes
-        private static byte[] iv = Encoding.UTF8.GetBytes("xAQ?dLuYXeRd"); // 16 bytes
+        private readonly static byte[] _key = Encoding.UTF8.GetBytes("EhP#?Sw0c?hF"); // 16, 24, or 32 bytes
+        private readonly static byte[] _iv = Encoding.UTF8.GetBytes("xAQ?dLuYXeRd"); // 16 bytes
 
         /// <summary>
         /// Метод для шифрования входящих данных.
@@ -27,8 +27,8 @@ namespace AirportDispatcher.Classes
 
             using (Aes aes = Aes.Create())
             {
-                aes.Key = key;
-                aes.IV = iv;
+                aes.Key = _key;
+                aes.IV = _iv;
                 ICryptoTransform encryptor = aes.CreateEncryptor(aes.Key, aes.IV);
                 using (MemoryStream ms = new MemoryStream())
                 {
@@ -60,8 +60,8 @@ namespace AirportDispatcher.Classes
 
             using (Aes aes = Aes.Create())
             {
-                aes.Key = key;
-                aes.IV = iv;
+                aes.Key = _key;
+                aes.IV = _iv;
                 ICryptoTransform decryptor = aes.CreateDecryptor(aes.Key, aes.IV);
                 using (MemoryStream ms = new MemoryStream(cipherBytes))
                 {

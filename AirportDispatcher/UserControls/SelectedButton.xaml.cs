@@ -28,10 +28,7 @@ namespace AirportDispatcher.UserControls
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             ThisRadioButton.IsChecked = true;
-            if (Click != null)
-            {
-                Click(this, e);
-            }
+            Click?.Invoke(this, e);
         }
 
         private bool _firstStart = true;
