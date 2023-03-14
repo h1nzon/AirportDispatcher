@@ -37,7 +37,14 @@ namespace AirportDispatcher
                 MenuColumn.Width = new GridLength(1, GridUnitType.Star);
             }
         }
+        private void ApplicationClose_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+        private void ApplicationBar_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            this.DragMove();
+        }
         #endregion
-        
     }
 }
