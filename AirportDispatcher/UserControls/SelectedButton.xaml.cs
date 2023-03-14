@@ -24,14 +24,10 @@ namespace AirportDispatcher.UserControls
 
         public delegate void MyButtonClickEventHandler(object sender, EventArgs e);
         public event MyButtonClickEventHandler Click;
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            ThisRadioButton.IsChecked = true;
-            Click?.Invoke(this, e);
-        }
-
         private bool _firstStart = true;
+
+        #region Animation
+
         private void LineAnimationEnabled()
         {
             if (!(bool)ThisRadioButton.IsChecked || _firstStart)
@@ -64,6 +60,16 @@ namespace AirportDispatcher.UserControls
             }
         }
 
+        #endregion
+
+        #region Events
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            ThisRadioButton.IsChecked = true;
+            Click?.Invoke(this, e);
+        }
+
         private void ThisButton_MouseEnter(object sender, MouseEventArgs e)
         {
             LineAnimationEnabled();
@@ -83,5 +89,7 @@ namespace AirportDispatcher.UserControls
         {
             LineAnimationFalse();
         }
+
+        #endregion
     }
 }

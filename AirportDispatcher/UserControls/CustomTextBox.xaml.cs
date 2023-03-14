@@ -48,6 +48,23 @@ namespace AirportDispatcher.UserControls
         }
 
         /// <summary>
+        /// Проверка выбранного типа TextBox
+        /// </summary>
+        private void TypeSelected()
+        {
+            if (TextType == TextBoxType.Password)
+            {
+                ThisTextBox.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                ThisPasswordBox.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        #region Animation
+
+        /// <summary>
         /// Событие для анимации CustomTextBox 
         /// </summary>
         private async void TextBox_GotFocus(object sender, RoutedEventArgs e)
@@ -127,20 +144,9 @@ namespace AirportDispatcher.UserControls
             }
         }
 
-        /// <summary>
-        /// Проверка выбранного типа TextBox
-        /// </summary>
-        private void TypeSelected()
-        {
-            if (TextType == TextBoxType.Password)
-            {
-                ThisTextBox.Visibility = Visibility.Collapsed;
-            }
-            else
-            {
-                ThisPasswordBox.Visibility = Visibility.Collapsed;
-            }
-        }
+        #endregion
+
+        #region Events
 
         private void ThisPasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
         {
@@ -148,5 +154,7 @@ namespace AirportDispatcher.UserControls
             TextChange?.Invoke(this, e);
             ThisPasswordBox.BorderBrush = BorderColor;
         }
+
+        #endregion
     }
 }

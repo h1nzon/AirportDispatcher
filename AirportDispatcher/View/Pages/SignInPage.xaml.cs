@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using AirportDispatcher.Properties;
+using AirportDispatcher.View.Windows;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
@@ -16,8 +18,11 @@ namespace AirportDispatcher.View.Pages
 
         private void SignInButton_Click(object sender, System.EventArgs e)
         {
-            // Заглушка на авторизацию.
-            MessageBox.Show("Авторизация");
+            Properties.Settings.Default.isLogin = true;
+            MainWindow mainWindow = new MainWindow();
+            Window parentWindow = Window.GetWindow(this);
+            mainWindow.Show();
+            parentWindow.Close();
         }
     }
 }

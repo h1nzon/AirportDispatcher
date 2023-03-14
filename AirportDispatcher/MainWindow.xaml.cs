@@ -8,12 +8,36 @@ namespace AirportDispatcher
     /// </summary>
     public partial class MainWindow : Window
     {
+        private bool _menuMinimal = false;
+
         public MainWindow()
         {
             InitializeComponent();
-            AuthWindow authWindow = new AuthWindow();
-            authWindow.Show();
-            this.Close();
+
+            // Переход на авторизацию
+            if (!Properties.Settings.Default.isLogin)
+            {
+                AuthWindow authWindow = new AuthWindow();
+                authWindow.Show();
+                this.Close();
+            }
         }
+
+        #region ButtonEvents
+        private void MinimalMenuButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (!_menuMinimal)
+            {
+                _menuMinimal = true;
+                MenuColumn.Width = new GridLength(2, GridUnitType.Star);
+            }
+            else
+            {
+                _menuMinimal = false;
+                MenuColumn.Width = new GridLength(1, GridUnitType.Star);
+            }
+        }
+        #endregion
+        
     }
 }
