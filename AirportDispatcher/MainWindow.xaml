@@ -22,10 +22,10 @@
                     <TextBlock Text="{Binding Title,RelativeSource={RelativeSource FindAncestor,AncestorType=Window}}"/>
                     <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
                         <Button>
-                            <Image Source="Assets/minimize.png"/>
+                            <Image Source="Assets/Images/ApplicationDesing/MinimizeApplication.png"/>
                         </Button>
                         <Button x:Name="ApplicationCloseButton" Click="ApplicationClose_Click">
-                            <Image Source="Assets/close.png"/>
+                            <Image Source="Assets/Images/ApplicationDesing/CloseApplication.png"/>
                         </Button>
                     </StackPanel>
                 </Grid>
@@ -40,7 +40,9 @@
                 <Button Content=">" Background="Transparent" x:Name="MinimalMenuButton" Click="MinimalMenuButton_Click"/>
             </StackPanel>
             <UniformGrid Background="#202020" Columns="1">
-                <usercontrols:SelectedButton Text="1" IsSelected="True"/>
+                <usercontrols:SelectedButton Text="1" IsSelected="True">
+                    <Image Source="Assets/Images/ApplicationDesing/ProfileMenu.png" Width="38"/>
+                </usercontrols:SelectedButton>
                 <usercontrols:SelectedButton Text="2"/>
                 <usercontrols:SelectedButton Text="3"/>
                 <usercontrols:SelectedButton Text="4"/>

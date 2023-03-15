@@ -22,16 +22,16 @@
                         <TextBlock Text="{Binding Title,RelativeSource={RelativeSource FindAncestor,AncestorType=Window}}"/>
                         <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
                             <Button>
-                                <Image Source="../../Assets/minimize.png"/>
+                                <Image Source="../../Assets/Images/ApplicationDesing/MinimizeApplication.png"/>
                             </Button>
                             <Button x:Name="ApplicationCloseButton" Click="ApplicationClose_Click">
-                                <Image Source="../../Assets/close.png"/>
+                                <Image Source="../../Assets/Images/ApplicationDesing/CloseApplication.png"/>
                             </Button>
                         </StackPanel>
                     </Grid>
                 </StackPanel>
                 <StackPanel Grid.Row="1" Background="#202020">
-                    <Image Source="../../Assets/Logo.png" Width="150" Margin="20"/>
+                    <Image Source="../../Assets/Images/ApplicationDesing/LogoApplication.png" Width="150" Margin="20"/>
                     <UniformGrid Columns="2">
                         <usercontrols:SelectedButton x:Name="LoginButton" 
                                                  IsSelected="True"

@@ -153,11 +153,14 @@
     <Folder Include="Model\PartialClasses\" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\Logo.png" />
+    <Resource Include="Assets\Images\ApplicationDesing\LogoApplication.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\close.png" />
-    <Resource Include="Assets\minimize.png" />
+    <Resource Include="Assets\Images\ApplicationDesing\CloseApplication.png" />
+    <Resource Include="Assets\Images\ApplicationDesing\MinimizeApplication.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Images\ApplicationDesing\ProfileMenu.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
