@@ -14,12 +14,27 @@ namespace AirportDispatcher.UserControls
     {
 
         public string Text { get; set; }
+        public int ImageWidth { get; set; }
+        public string ImageSource { get; set; }
         public bool IsSelected { get; set; }
+
 
         public SelectedButton()
         {
             InitializeComponent();
             this.DataContext = this;
+        }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (String.IsNullOrEmpty(Text))
+                TextContent.Visibility = Visibility.Collapsed;
+            if (!String.IsNullOrEmpty(ImageSource))
+                ImageContent.Visibility = Visibility.Visible;
+            ThisButton.Width = ActualWidth; 
+            ThisButton.Height = ActualHeight;
+            if(ImageWidth != 0)
+                ImageContent.Width = ImageWidth; 
         }
 
         public delegate void MyButtonClickEventHandler(object sender, EventArgs e);
@@ -91,5 +106,6 @@ namespace AirportDispatcher.UserControls
         }
 
         #endregion
+
     }
 }

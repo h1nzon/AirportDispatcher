@@ -5,9 +5,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AirportDispatcher.UserControls"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800" Loaded="UserControl_Loaded">
     <Grid Background="#202020">
-        <TextBlock x:Name="ButtonText"
+        <!--<TextBlock x:Name="ButtonText"
                    Text="{Binding Text}"
                    Background="Transparent" 
                    Foreground="White"
@@ -15,7 +15,7 @@
                    HorizontalAlignment="Center"
                    TextAlignment="Center"
                    FontSize="14"
-                   FontWeight="SemiBold"/>
+                   FontWeight="SemiBold"/>-->
         <Line X1="0" X2="0"
               x:Name="LineSelected"
               Stroke="#8bd7f9" 
@@ -32,10 +32,18 @@
                      Checked="ThisRadioButton_Checked"
                      Unchecked="ThisRadioButton_Unchecked"/>
         <Button x:Name="ThisButton"
-                Click="Button_Click" 
-                BorderThickness="0" 
+                Click="Button_Click"
+                BorderThickness="0"
+                Foreground="White"
+                FontSize="14"
+                FontWeight="SemiBold"
                 Background="Transparent"
                 MouseEnter="ThisButton_MouseEnter"
-                MouseLeave="ThisButton_MouseLeave"/>
+                MouseLeave="ThisButton_MouseLeave">
+            <StackPanel Orientation="Vertical">
+                <Image x:Name="ImageContent" Source="{Binding ImageSource}" Visibility="Collapsed"/>
+                <TextBlock x:Name="TextContent" FontSize="14" FontWeight="SemiBold" Text="{Binding Text}" TextAlignment="Center"/>
+            </StackPanel>
+        </Button>
     </Grid>
 </UserControl>

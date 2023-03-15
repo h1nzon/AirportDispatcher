@@ -162,5 +162,11 @@
   <ItemGroup>
     <Resource Include="Assets\Images\ApplicationDesing\ProfileMenu.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Images\ApplicationDesing\HomeMenu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Images\ApplicationDesing\TicketMenu.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
