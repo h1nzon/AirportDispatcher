@@ -29,8 +29,8 @@
                      VerticalAlignment="Center"
                      HorizontalAlignment="Center"
                      IsChecked="{Binding IsSelected}"
-                     Checked="ThisRadioButton_Checked"
-                     Unchecked="ThisRadioButton_Unchecked"/>
+                     Checked="ThisButton_AnimationEnabled"
+                     Unchecked="ThisButton_AnimationFalse"/>
         <Button x:Name="ThisButton"
                 Click="Button_Click"
                 BorderThickness="0"
@@ -38,8 +38,8 @@
                 FontSize="14"
                 FontWeight="SemiBold"
                 Background="Transparent"
-                MouseEnter="ThisButton_MouseEnter"
-                MouseLeave="ThisButton_MouseLeave">
+                MouseEnter="ThisButton_AnimationEnabled"
+                MouseLeave="ThisButton_AnimationFalse">
             <StackPanel Orientation="Vertical">
                 <Image x:Name="ImageContent" Source="{Binding ImageSource}" Visibility="Collapsed"/>
                 <TextBlock x:Name="TextContent" FontSize="14" FontWeight="SemiBold" Text="{Binding Text}" TextAlignment="Center"/>

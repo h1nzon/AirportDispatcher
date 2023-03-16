@@ -50,7 +50,7 @@ namespace AirportDispatcher.UserControls
                 _firstStart = false;
                 DoubleAnimation animation = new DoubleAnimation
                 {
-                    From = 0,
+                    From = LineSelected.ActualWidth,
                     To = ActualWidth,
                     Duration = new Duration(TimeSpan.FromSeconds(0.5)),
                     EasingFunction = new QuadraticEase { EasingMode = EasingMode.EaseOut }
@@ -66,7 +66,7 @@ namespace AirportDispatcher.UserControls
                 LineSelected.Visibility = Visibility.Visible;
                 DoubleAnimation animation = new DoubleAnimation
                 {
-                    From = ActualWidth,
+                    From = LineSelected.ActualWidth,
                     To = 0,
                     Duration = new Duration(TimeSpan.FromSeconds(0.5)),
                     EasingFunction = new QuadraticEase { EasingMode = EasingMode.EaseOut }
@@ -85,22 +85,12 @@ namespace AirportDispatcher.UserControls
             Click?.Invoke(this, e);
         }
 
-        private void ThisButton_MouseEnter(object sender, MouseEventArgs e)
+        private void ThisButton_AnimationEnabled(object sender, EventArgs e)
         {
             LineAnimationEnabled();
         }
 
-        private void ThisButton_MouseLeave(object sender, MouseEventArgs e)
-        {
-            LineAnimationFalse();
-        }
-
-        private void ThisRadioButton_Checked(object sender, RoutedEventArgs e)
-        {
-            LineAnimationEnabled();
-        }
-
-        private void ThisRadioButton_Unchecked(object sender, RoutedEventArgs e)
+        private void ThisButton_AnimationFalse(object sender, EventArgs e)
         {
             LineAnimationFalse();
         }
