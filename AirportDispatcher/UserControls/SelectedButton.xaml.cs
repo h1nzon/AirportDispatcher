@@ -18,12 +18,11 @@ namespace AirportDispatcher.UserControls
         public string ImageSource { get; set; }
         public bool IsChecked { get; set; }
         public string GroupName = "ButtonSelected";
-        public bool _firstStart { get; set; }
+        public bool FirstStart = true;
 
         public SelectedButton()
         {
             InitializeComponent();
-            _firstStart = true;
             this.DataContext = this;
         }
 
@@ -39,17 +38,13 @@ namespace AirportDispatcher.UserControls
                 ImageContent.Width = ImageWidth; 
         }
 
-        public delegate void MyButtonClickEventHandler(object sender, EventArgs e);
-        public delegate void ReloadElement();
-        public event MyButtonClickEventHandler Click;
-
         #region Animation
 
         private void LineAnimationEnabled()
         {
-            if (!(bool)ThisRadioButton.IsChecked || _firstStart)
+            if (!(bool)ThisRadioButton.IsChecked || FirstStart)
             {
-                _firstStart = false;
+                FirstStart = false;
                 DoubleAnimation animation = new DoubleAnimation
                 {
                     From = LineSelected.ActualWidth,
@@ -61,7 +56,7 @@ namespace AirportDispatcher.UserControls
             }
         }
 
-        private void LineAnimationFalse()
+        public void LineAnimationFalse()
         {
             if (!(bool)ThisRadioButton.IsChecked)
             {
@@ -80,11 +75,20 @@ namespace AirportDispatcher.UserControls
         #endregion
 
         #region Events
-        private void ReloadElement()
+        public void ReloadElement()
         {
-            _firstStart = true;
-            LineAnimationEnabled();
+            DoubleAnimation animation = new DoubleAnimation
+            {
+                From = LineSelected.ActualWidth,
+                To = ActualWidth * 2,
+                Duration = new Duration(TimeSpan.FromSeconds(0.5)),
+                EasingFunction = new QuadraticEase { EasingMode = EasingMode.EaseOut }
+            };
+            LineSelected.BeginAnimation(Line.X2Property, animation);
         }
+
+        public delegate void MyButtonClickEventHandler(object sender, EventArgs e);
+        public event MyButtonClickEventHandler Click;
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
