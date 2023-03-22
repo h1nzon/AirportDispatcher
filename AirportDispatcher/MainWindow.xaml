@@ -42,7 +42,8 @@
             <UniformGrid Background="#202020" Columns="1" x:Name="MenuApplication">
                 <usercontrols:SelectedButton ImageSource="../Assets/Images/ApplicationDesing/ProfileMenu.png"
                                              ImageWidth="32"
-                                             IsChecked="True"/>
+                                             IsChecked="True"
+                                             x:Name="ProfileMenuButton"/>
                 <usercontrols:SelectedButton ImageSource="../Assets/Images/ApplicationDesing/HomeMenu.png"
                                              ImageWidth="32"/>
                 <usercontrols:SelectedButton ImageSource="../Assets/Images/ApplicationDesing/TicketMenu.png"

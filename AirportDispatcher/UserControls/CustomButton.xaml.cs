@@ -16,7 +16,10 @@ namespace AirportDispatcher.UserControls
 
         private void ThisButton_Click(object sender, RoutedEventArgs e)
         {
-            Click?.Invoke(this, e);
+            if (Click != null)
+            {
+                Click(this, e);
+            }
         }
 
         public CustomButton()
