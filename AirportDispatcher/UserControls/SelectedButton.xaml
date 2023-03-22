@@ -7,15 +7,6 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800" Loaded="UserControl_Loaded">
     <Grid Background="#202020">
-        <!--<TextBlock x:Name="ButtonText"
-                   Text="{Binding Text}"
-                   Background="Transparent" 
-                   Foreground="White"
-                   VerticalAlignment="Center"
-                   HorizontalAlignment="Center"
-                   TextAlignment="Center"
-                   FontSize="14"
-                   FontWeight="SemiBold"/>-->
         <Line X1="0" X2="0"
               x:Name="LineSelected"
               Stroke="#8bd7f9" 
@@ -28,7 +19,7 @@
                      Visibility="Collapsed"
                      VerticalAlignment="Center"
                      HorizontalAlignment="Center"
-                     IsChecked="{Binding IsSelected}"
+                     IsChecked="{Binding IsChecked}"
                      Checked="ThisButton_AnimationEnabled"
                      Unchecked="ThisButton_AnimationFalse"/>
         <Button x:Name="ThisButton"

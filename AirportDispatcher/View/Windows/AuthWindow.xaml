@@ -34,7 +34,7 @@
                     <Image Source="../../Assets/Images/ApplicationDesing/LogoApplication.png" Width="150" Margin="20"/>
                     <UniformGrid Columns="2">
                         <usercontrols:SelectedButton x:Name="LoginButton" 
-                                                 IsSelected="True"
+                                                 IsChecked="True"
                                                  Text="Login"
                                                  Height="25" 
                                                  Click="LoginButton_Click"/>

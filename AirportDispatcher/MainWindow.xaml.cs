@@ -1,5 +1,10 @@
-﻿using AirportDispatcher.View.Windows;
+﻿using AirportDispatcher.UserControls;
+using AirportDispatcher.View.Windows;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace AirportDispatcher
 {
@@ -28,8 +33,12 @@ namespace AirportDispatcher
         {
             if (!_menuMinimal)
             {
+                List<SelectedButton> radioButtons = MenuApplication.Children.OfType<SelectedButton>().ToList();
+                var rbTarget = radioButtons
+                      .Where(r => (bool)r.IsChecked);
                 _menuMinimal = true;
                 MenuColumn.Width = new GridLength(2, GridUnitType.Star);
+                rbTarget.ReloadElement();
             }
             else
             {

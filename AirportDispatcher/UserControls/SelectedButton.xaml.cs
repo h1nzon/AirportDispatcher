@@ -16,12 +16,14 @@ namespace AirportDispatcher.UserControls
         public string Text { get; set; }
         public int ImageWidth { get; set; }
         public string ImageSource { get; set; }
-        public bool IsSelected { get; set; }
-
+        public bool IsChecked { get; set; }
+        public string GroupName = "ButtonSelected";
+        public bool _firstStart { get; set; }
 
         public SelectedButton()
         {
             InitializeComponent();
+            _firstStart = true;
             this.DataContext = this;
         }
 
@@ -38,8 +40,8 @@ namespace AirportDispatcher.UserControls
         }
 
         public delegate void MyButtonClickEventHandler(object sender, EventArgs e);
+        public delegate void ReloadElement();
         public event MyButtonClickEventHandler Click;
-        private bool _firstStart = true;
 
         #region Animation
 
@@ -78,6 +80,11 @@ namespace AirportDispatcher.UserControls
         #endregion
 
         #region Events
+        private void ReloadElement()
+        {
+            _firstStart = true;
+            LineAnimationEnabled();
+        }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -96,6 +103,5 @@ namespace AirportDispatcher.UserControls
         }
 
         #endregion
-
     }
 }
