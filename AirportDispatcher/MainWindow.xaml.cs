@@ -34,16 +34,18 @@ namespace AirportDispatcher
             if (!_menuMinimal)
             {
                 List<SelectedButton> radioButtons = MenuApplication.Children.OfType<SelectedButton>().ToList();
-                var rbTarget = radioButtons
-                      .Where(r => (bool)r.IsChecked);
+                radioButtons = radioButtons.Where(r => (bool)r.IsChecked).ToList();
                 _menuMinimal = true;
                 MenuColumn.Width = new GridLength(2, GridUnitType.Star);
-                rbTarget.ReloadElement();
+                radioButtons[0].ReloadElement();
             }
             else
             {
+                List<SelectedButton> radioButtons = MenuApplication.Children.OfType<SelectedButton>().ToList();
+                radioButtons = radioButtons.Where(r => (bool)r.IsChecked).ToList();
                 _menuMinimal = false;
                 MenuColumn.Width = new GridLength(1, GridUnitType.Star);
+                radioButtons[0].ReloadElement();
             }
         }
         private void ApplicationClose_Click(object sender, RoutedEventArgs e)
