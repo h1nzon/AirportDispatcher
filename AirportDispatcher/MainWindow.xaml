@@ -41,16 +41,19 @@
             </StackPanel>
             <UniformGrid Background="#202020" Columns="1" x:Name="MenuApplication">
                 <usercontrols:SelectedButton ImageSource="../Assets/Images/ApplicationDesing/ProfileMenu.png"
-                                             ImageWidth="32"
+                                             ImageWidth="32" x:Name="ProfileButton"
                                              IsChecked="True"/>
                 <usercontrols:SelectedButton ImageSource="../Assets/Images/ApplicationDesing/HomeMenu.png"
-                                             ImageWidth="32"/>
+                                             ImageWidth="32" x:Name="HomeButton" Click="HomeButton_Click"/>
                 <usercontrols:SelectedButton ImageSource="../Assets/Images/ApplicationDesing/TicketMenu.png"
-                                             ImageWidth="32"/>
+                                             ImageWidth="32" x:Name="TicketButton" Click="TicketButton_Click"/>
                 <usercontrols:SelectedButton Text="4"/>
                 <usercontrols:SelectedButton Text="5"/>
                 <usercontrols:SelectedButton Text="6"/>
             </UniformGrid>
+        </Grid>
+        <Grid Grid.Column="2" Grid.Row="1">
+            <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"/>
         </Grid>
     </Grid>
 </Window>

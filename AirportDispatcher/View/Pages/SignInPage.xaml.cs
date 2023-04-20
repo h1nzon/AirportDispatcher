@@ -1,4 +1,5 @@
-﻿using AirportDispatcher.Properties;
+﻿using AirportDispatcher.Classes;
+using AirportDispatcher.Properties;
 using AirportDispatcher.View.Windows;
 using System.Windows;
 using System.Windows.Controls;
@@ -18,11 +19,18 @@ namespace AirportDispatcher.View.Pages
 
         private void SignInButton_Click(object sender, System.EventArgs e)
         {
-            Properties.Settings.Default.isLogin = true;
-            MainWindow mainWindow = new MainWindow();
-            Window parentWindow = Window.GetWindow(this);
-            mainWindow.Show();
-            parentWindow.Close();
+            if(AuthenticationClass.AuthenticateUser(LoginUser.Text, UserPassword.Password))
+            {
+                Properties.Settings.Default.isLogin = true;
+                MainWindow mainWindow = new MainWindow();
+                Window parentWindow = Window.GetWindow(this);
+                mainWindow.Show();
+                parentWindow.Close();
+            }
+            else
+            {
+                MessageBox.Show("Не удалось :(");
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using AirportDispatcher.UserControls;
+using AirportDispatcher.View.Pages;
 using AirportDispatcher.View.Windows;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -57,5 +58,15 @@ namespace AirportDispatcher
             this.DragMove();
         }
         #endregion
+
+        private void HomeButton_Click(object sender, System.EventArgs e)
+        {
+            MainFrame.Navigate(new HomePage());
+        }
+
+        private void TicketButton_Click(object sender, System.EventArgs e)
+        {
+            MainFrame.Navigate(new TicketPage());
+        }
     }
 }
